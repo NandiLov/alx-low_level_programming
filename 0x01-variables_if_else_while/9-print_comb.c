@@ -1,4 +1,6 @@
-include < stdio.h >
+#include < stdio.h >
+#include <stdlib.h>
+#include <time.h>
 /**
  *prints all possible combinations of single-digit numbers
  *Return: 0
