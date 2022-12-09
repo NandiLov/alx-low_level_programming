@@ -3,7 +3,7 @@
 #include <time.h>
 /**
  * main - receives no arguement
- * Return: Always 0 (success)
+ * Return: Always 0
  */
 int main(void)
 {
@@ -11,7 +11,6 @@ int main(void)
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	
 	if (n % 10 > 5)
 	printf("greater than 5\n");
 	else if (n % 10 == 0)
