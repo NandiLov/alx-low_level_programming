@@ -1,15 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+include < stdio.h >
 /**
- * main - receives no arguement
- *
- * Return: Always 0
+ *prints all possible combinations of single-digit numbers
+ *Return: 0
  */
 int main(void)
 {
-
-
 		putchar((num % 10) + '0');
 		if (num == 9)
 			continue;
