@@ -1,9 +1,8 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
  * main - function that prints _putchar
- * Return: returns 0 if successful
+ * Return: 0 if successful
  */
 
 int main(void)
