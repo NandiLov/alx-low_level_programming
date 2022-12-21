@@ -5,7 +5,7 @@
  * File: main.h                                                                                                                    
  * Auth: Nandila Mulilalila                                                                                                           
  * Desc: Header file containing prototypes for all functions                                                                            
- *       used in the 0x06. C - More pointers, arrays and strings directory.
+ * used in task 0x06. C - More pointers, arrays and strings directory.
  */                                                                                                                                     
                                                                                                                                         
 int _putchar(char c);                                                                                                                   
