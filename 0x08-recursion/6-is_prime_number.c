@@ -6,7 +6,7 @@
  *@p: number that will be evaluated
  *@v: variable that will test if @p is prime
  *
- *Return: 1 if @p is prime_number, 0 otherwise
+ *Return: 1 if @p is prime, 0 otherwise
  */
 int get_prime(int v, int p)
 {
@@ -25,3 +25,12 @@ int get_prime(int v, int p)
  *
  *Return: 1 if @n is prime_number, 0 otherwis
  */
+
+int is_prime_number(int n)
+{
+	if (n < 2)
+		return (0);
+	if (n == 2)
+		return (1);
+	return (get_prime(2, n));
+}
