@@ -2,65 +2,41 @@
 #include <stdio.h>
 #include <math.h>
 
+
 /**
- * jump_list - searches for a value in a sorted linked list of integers
- * using the Jump search algorithm.
- *
- * @list: Pointer to the head of the linked list
- * @size: Number of nodes in the linked list
- * @value: The value to search for
- *
- * Return: Pointer to the first node where value is located or
- * if value is not present in head or if head is NULL, return NULL
- */
+  * jump_search - Searches for a value in a sorted array
+  *               of integers using jump search.
+  * @array: A pointer to the first element of the array to search.
+  * @size: The number of elements in the array.
+  * @value: The value to search for.
+  *
+  * Return: If the value is not present or the array is NULL, -1.
+  *         Otherwise, the first index where the value is located.
+  *
+  * Description: Prints a value every time it is compared in the array.
+  *              Uses the square root of the array size as the jump step.
+  */
+int jump_search(int *array, size_t size, int value)
+{
+	size_t i, jump, step;
 
-int jump_search(int *array, size_t size, int value) {
-    if (array == NULL) {
-        return -1;
-    }
+	if (array == NULL || size == 0)
+		return (-1);
 
-    // Determine the jump step using the square root of the size
-    size_t jump = sqrt(size);
-    size_t prev = 0;
+	step = sqrt(size);
+	for (i = jump = 0; jump < size && array[jump] < value;)
+	{
+		printf("Value checked array[%ld] = [%d]\n", jump, array[jump]);
+		i = jump;
+		jump += step;
+	}
 
-    // Find the block where the target value may exist
-    while (array[jump - 1] < value && jump < size) {
-        printf("Value checked array[%lu] = [%d]\n", jump, array[jump]);
-        prev = jump;
-        jump += sqrt(size);
-    }
+	printf("Value found between indexes [%ld] and [%ld]\n", i, jump);
 
-    // Perform linear search within the block
-    while (array[prev] < value) {
-        prev++;
+	jump = jump < size - 1 ? jump : size - 1;
+	for (; i < jump && array[i] < value; i++)
+		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+	printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 
-        // If we reach the end of the block or the end of the array, target value is not present
-        if (prev == fmin(jump, size)) {
-            return -1;
-        }
-    }
-
-    // If the target value is found
-    if (array[prev] == value) {
-        printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-        return prev;
-    }
-
-    return -1;  // Target value not found
-}
-
-int main() {
-    int array[] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
-    size_t size = sizeof(array) / sizeof(array[0]);
-    int value = 11;
-
-    int result = jump_search(array, size, value);
-
-    if (result != -1) {
-        printf("Value %d found at index %d\n", value, result);
-    } else {
-        printf("Value %d not found in the array\n", value);
-    }
-
-    return 0;
+	return (array[i] == value ? (int)i : -1);
 }
